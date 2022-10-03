@@ -1,16 +1,17 @@
-# This is a sample Python script.
+from selenium import webdriver
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+# Taking input from user
+search_string = input("Input the URL or string you want to search for:")
 
+# This is done to structure the string
+# into search url.(This can be ignored)
+search_string = search_string.replace(' ', '+')
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
+# Assigning the browser variable with chromedriver of Chrome.
+# Any other browser and its respective webdriver
+# like geckodriver for Mozilla Firefox can be used
+browser = webdriver.Chrome('chromedriver')
 
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+for i in range(1):
+	matched_elements = browser.get("https://www.google.com/search?q=" +
+									search_string + "&start=" + str(i))
